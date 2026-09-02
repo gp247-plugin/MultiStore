@@ -51,8 +51,17 @@ Multi-Store có sẵn **bản Free** (miễn phí, đủ dùng để bắt đầ
 
 🔗 **Tìm hiểu & nâng cấp bản Pro:** [gp247.net/vi/product/multi-store-pro.html](https://gp247.net/vi/product/multi-store-pro.html) · [English](https://gp247.net/en/product/multi-store-pro.html)
 
+## 4. Đưa sản phẩm vào cửa hàng & cấp quyền quản trị
+Hai luồng vận hành hay gặp khi chạy nhiều cửa hàng — bản Free đủ để bắt đầu, phần nâng cao thuộc Pro:
+
+- **Tự đăng sản phẩm cho một cửa hàng (có ở Free):** khi đã cài Multi-Store, lúc tạo/sửa sản phẩm ở admin gốc bạn **chọn cửa hàng** mà sản phẩm thuộc về — sản phẩm chỉ hiển thị ở cửa hàng đó.
+- **Publish sản phẩm gốc sang nhiều cửa hàng (Pro):** đăng một sản phẩm gốc sang nhiều cửa hàng từ một nơi (màn *"Đồng bộ sản phẩm sang cửa hàng"*), mỗi cửa hàng một bản độc lập giữ liên kết nguồn và đồng bộ lại được.
+- **Cấp quyền quản trị riêng cho từng cửa hàng (Pro):** giao mỗi cửa hàng cho một người quản trị riêng; họ đăng nhập trên domain cửa hàng, chỉ thấy phạm vi được giao và không vào admin gốc.
+
+🔗 Hai luồng Pro ở trên: [gp247.net/vi/product/multi-store-pro.html](https://gp247.net/vi/product/multi-store-pro.html) · [English](https://gp247.net/en/product/multi-store-pro.html)
+
 ## Điều kiện & ràng buộc (hiểu trước khi dùng)
-- **Không cài chung với Multi-Vendor** — Multi-Store và các plugin multi-vendor (MultiVendorPro / MultiVendor / Pmo247) là hai mô hình khác nhau, dùng chung dữ liệu cửa hàng theo cách xung đột nhau. Hệ thống sẽ **chặn cài đặt** nếu website đang có plugin multi-vendor; gỡ plugin kia trước rồi mới cài.
+- **Không cài chung với Multi-Vendor** — Multi-Store và multi-vendor là hai mô hình khác nhau, dùng chung dữ liệu cửa hàng theo cách xung đột nhau. Hệ thống sẽ **chặn cài đặt** nếu website đang có plugin multi-vendor; gỡ plugin kia trước rồi mới cài.
 - **Bản Free giới hạn 3 cửa hàng** (tính cả cửa hàng gốc) — đủ để bắt đầu; muốn thêm phải nâng lên Pro. Đây là ranh giới giữa hai bản, không phải lỗi.
 - **Không khoá được cửa hàng gốc (ROOT)** — cửa hàng gốc là nền của cả hệ thống; khoá nó sẽ làm sập toàn bộ, nên thao tác này luôn bị chặn (chức năng khoá thuộc bản Pro).
 - **Yêu cầu nền tảng:** cần có `gp247/shop` và chạy trên GP247 core 3.0 trở lên. Đây là plugin của S-Cart/GP247, không dùng độc lập.

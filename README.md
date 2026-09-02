@@ -51,8 +51,17 @@ Multi-Store comes as a **Free edition** (free, enough to get started) and a **Pr
 
 🔗 **Learn more & upgrade to Pro:** [gp247.net/en/product/multi-store-pro.html](https://gp247.net/en/product/multi-store-pro.html) · [Tiếng Việt](https://gp247.net/vi/product/multi-store-pro.html)
 
+## 4. Getting products into stores & granting admin rights
+Two common workflows when running many stores — the Free edition is enough to start, the advanced parts are Pro:
+
+- **Post a product for a specific store (in Free):** with Multi-Store installed, when creating/editing a product in the root admin you **pick the store** it belongs to — the product shows only in that store.
+- **Publish a root product to many stores (Pro):** publish one root product to many stores from a single place (the *"Sync products to stores"* screen), each store getting an independent copy that keeps a source link and can be re-synced.
+- **Grant a dedicated administrator per store (Pro):** hand each store to its own administrator; they log in on the store domain, see only their scope, and cannot reach the root admin.
+
+🔗 The two Pro workflows above: [gp247.net/en/product/multi-store-pro.html](https://gp247.net/en/product/multi-store-pro.html) · [Tiếng Việt](https://gp247.net/vi/product/multi-store-pro.html)
+
 ## Conditions & Rules (know before you use it)
-- **Cannot be installed alongside Multi-Vendor** — Multi-Store and the multi-vendor plugins (MultiVendorPro / MultiVendor / Pmo247) are different models that share store data in conflicting ways. The system **blocks installation** if a multi-vendor plugin is present; remove the other plugin first, then install.
+- **Cannot be installed alongside Multi-Vendor** — Multi-Store and multi-vendor are different models that share store data in conflicting ways. The system **blocks installation** if a multi-vendor plugin is present; remove the other plugin first, then install.
 - **The Free edition is limited to 3 stores** (including the root store) — enough to get started; to add more, upgrade to Pro. This is the line between the two editions, not an error.
 - **The root (ROOT) store cannot be locked** — the root store is the foundation of the whole system; locking it would take everything down, so this action is always blocked (locking is a Pro feature).
 - **Platform requirements:** requires `gp247/shop` and runs on GP247 core 3.0 or later. This is an S-Cart/GP247 plugin, not a standalone product.
