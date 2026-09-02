@@ -56,7 +56,7 @@ Two common workflows when running many stores — the Free edition is enough to 
 
 - **Post a product for a specific store (in Free):** with Multi-Store installed, when creating/editing a product in the root admin you **pick the store** it belongs to — the product shows only in that store.
 - **Publish a root product to many stores (Pro):** publish one root product to many stores from a single place (the *"Sync products to stores"* screen), each store getting an independent copy that keeps a source link and can be re-synced.
-- **Grant a dedicated administrator per store (Pro):** hand each store to its own administrator; they log in on the store domain, see only their scope, and cannot reach the root admin.
+- **Grant a dedicated administrator per store (Pro):** hand each store to its own administrator (two presets ship: *Store Manager* / *Store Member*); they log in on the store domain, see only their scope, and cannot reach the root admin — **every platform-wide action stays blocked no matter which permissions they hold**.
 
 🔗 The two Pro workflows above: [gp247.net/en/product/multi-store-pro.html](https://gp247.net/en/product/multi-store-pro.html) · [Tiếng Việt](https://gp247.net/vi/product/multi-store-pro.html)
 

@@ -56,7 +56,7 @@ Hai luồng vận hành hay gặp khi chạy nhiều cửa hàng — bản Free 
 
 - **Tự đăng sản phẩm cho một cửa hàng (có ở Free):** khi đã cài Multi-Store, lúc tạo/sửa sản phẩm ở admin gốc bạn **chọn cửa hàng** mà sản phẩm thuộc về — sản phẩm chỉ hiển thị ở cửa hàng đó.
 - **Publish sản phẩm gốc sang nhiều cửa hàng (Pro):** đăng một sản phẩm gốc sang nhiều cửa hàng từ một nơi (màn *"Đồng bộ sản phẩm sang cửa hàng"*), mỗi cửa hàng một bản độc lập giữ liên kết nguồn và đồng bộ lại được.
-- **Cấp quyền quản trị riêng cho từng cửa hàng (Pro):** giao mỗi cửa hàng cho một người quản trị riêng; họ đăng nhập trên domain cửa hàng, chỉ thấy phạm vi được giao và không vào admin gốc.
+- **Cấp quyền quản trị riêng cho từng cửa hàng (Pro):** giao mỗi cửa hàng cho một người quản trị riêng (có sẵn 2 vai trò mẫu *Store Manager* / *Store Member*); họ đăng nhập trên domain cửa hàng, chỉ thấy phạm vi được giao và không vào admin gốc — **mọi thao tác cấp hệ thống luôn bị chặn dù được cấp quyền gì**.
 
 🔗 Hai luồng Pro ở trên: [gp247.net/vi/product/multi-store-pro.html](https://gp247.net/vi/product/multi-store-pro.html) · [English](https://gp247.net/en/product/multi-store-pro.html)
 
