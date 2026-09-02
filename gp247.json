@@ -1,0 +1,16 @@
+{
+    "name": "Manage multiple stores",
+    "image": "images/multi-store.png",
+    "auth": "GP247",
+    "email": "support@gp247.net",
+    "link": "https://GP247.net",
+    "configGroup": "Plugins",
+    "configCode": "Other",
+    "configKey": "MultiStore",
+    "version": "1.0",
+    "requireCore": ["3.0"],
+    "requireUpdateFrom": "1.0",
+    "requireComposerPackages": ["gp247/shop"],
+    "requireGp247Extensions": [],
+    "requireLivewire": true
+}
