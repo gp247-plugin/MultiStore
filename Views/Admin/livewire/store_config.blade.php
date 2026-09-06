@@ -62,8 +62,7 @@
         'general' => gp247_language_quickly('admin.store.tab_general', 'General settings'),
         'email' => gp247_language_render('admin.store.config_email'),
         'custom' => gp247_language_quickly('admin.store.tab_custom', 'Custom config'),
-        'captcha' => gp247_language_render('admin.captcha.captcha_title'),
-        'display' => gp247_language_render('admin.shop.config_limit_per_page'),
+        'shop' => gp247_language_render('admin.menu_titles.shop_config'),
     ]">
         {{-- Tab: store information --}}
         <div x-show="tab === 'info'" x-cloak class="grid grid-cols-1 gap-6 xl:grid-cols-2">
@@ -164,80 +163,14 @@
         </div>
 
 
-        {{-- Tab: captcha — 3-column table (Config detail | Key config | Value), like Shop configuration --}}
-        <div x-show="tab === 'captcha'" x-cloak>
-            <div class="overflow-x-auto">
-                <table class="w-full border-collapse text-sm">
-                    <thead>
-                        <tr class="border-b border-gray-200 dark:border-gray-700">
-                            <th class="py-2 pr-4 text-left font-semibold text-gray-700 dark:text-gray-200">{{ gp247_language_quickly('admin.config_detail', 'Config detail') }}</th>
-                            <th class="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">{{ gp247_language_quickly('admin.key_config', 'Key config') }}</th>
-                            <th class="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">{{ gp247_language_quickly('admin.admin_custom_config.add_new_value', 'Value') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
-                        @foreach ($captchaRows as $config)
-                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                                <td class="py-2 pr-4 align-middle text-gray-700 dark:text-gray-200">{{ gp247_language_render($config->detail) }}</td>
-                                <td class="px-4 py-2 align-middle font-mono text-xs text-gray-500 dark:text-gray-400">{{ $config->key }}</td>
-                                <td class="px-4 py-2 align-middle">
-                                    @if ($config->key === 'captcha_mode')
-                                        <label class="inline-flex cursor-pointer items-center">
-                                            <input type="checkbox" wire:model.live="captcha.captcha_mode" class="peer sr-only">
-                                            <span class="{{ $toggle }}"></span>
-                                        </label>
-                                    @elseif ($config->key === 'captcha_method')
-                                        <x-gp247::searchable-select
-                                            model="captcha.captcha_method"
-                                            :options="collect($captchaMethods)->map(fn ($l, $v) => ['id' => (string) $v, 'label' => $l])->values()->all()"
-                                            class="max-w-xs" />
-                                    @elseif ($config->key === 'captcha_page')
-                                        <div class="flex flex-wrap gap-x-6 gap-y-2">
-                                            @foreach ($captchaPages as $value => $label)
-                                                <label class="inline-flex cursor-pointer items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
-                                                    <input type="checkbox" value="{{ $value }}" wire:model.live="captcha.captcha_page"
-                                                        class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700">
-                                                    {{ $label }}
-                                                </label>
-                                            @endforeach
-                                        </div>
-                                    @else
-                                        <input type="text" wire:model.live.blur="captcha.{{ $config->key }}" class="{{ $input }} max-w-xs">
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-        {{-- Tab: display — 3-column table (Config detail | Key config | Value), like Shop configuration --}}
-        <div x-show="tab === 'display'" x-cloak>
-            <div class="overflow-x-auto">
-                <table class="w-full border-collapse text-sm">
-                    <thead>
-                        <tr class="border-b border-gray-200 dark:border-gray-700">
-                            <th class="py-2 pr-4 text-left font-semibold text-gray-700 dark:text-gray-200">{{ gp247_language_quickly('admin.config_detail', 'Config detail') }}</th>
-                            <th class="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">{{ gp247_language_quickly('admin.key_config', 'Key config') }}</th>
-                            <th class="px-4 py-2 text-left font-semibold text-gray-700 dark:text-gray-200">{{ gp247_language_quickly('admin.admin_custom_config.add_new_value', 'Value') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
-                        @foreach ($displayRows as $config)
-                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                                <td class="py-2 pr-4 align-middle text-gray-700 dark:text-gray-200">{{ gp247_language_render($config->detail) }}</td>
-                                <td class="px-4 py-2 align-middle font-mono text-xs text-gray-500 dark:text-gray-400">{{ $config->key }}</td>
-                                <td class="px-4 py-2 align-middle">
-                                    <input type="number" min="1" wire:model.live.blur="display.{{ $config->key }}"
-                                        class="block w-32 rounded-lg border border-gray-300 px-3 py-1.5 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100">
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+        {{-- Tab: Shop configuration for this store (customer/order per-store + sendmail/
+             limit/layout/captcha), embedded from shop-admin with a store override. The
+             product tab is global-only and is hidden in this store scope
+             (ADR shop-admin_shop-config-scope-levels, mod 20260906T140000). Supersedes
+             the former inline captcha/display tabs — one place, and it also shows the
+             inherited GLOBAL defaults, not only rows this store already saved. --}}
+        <div x-show="tab === 'shop'" x-cloak>
+            <livewire:gp247-shop-admin::shop-config-form :scope-store-id-override="(string) $storeId" :key="'msc-shop-'.$storeId" />
         </div>
     </x-gp247::tabs>
 

@@ -44,11 +44,9 @@ class StoreConfigManager extends GP247AdminComponent
     /** @var array<string, string> smtp_config values keyed by config key. */
     public array $smtp = [];
 
-    /** @var array<string, mixed> captcha_config values (captcha_page is an array). */
-    public array $captcha = [];
-
-    /** @var array<string, string> display_config (limit per page) values. */
-    public array $display = [];
+    // captcha_config / display_config are no longer edited here: the embedded
+    // <livewire:gp247-shop-admin::shop-config-form> "shop" tab owns all per-store shop
+    // config for this store (mod 20260906T140000).
 
     /**
      * Template key awaiting confirmation before the destructive
@@ -126,19 +124,6 @@ class StoreConfigManager extends GP247AdminComponent
         }
         foreach ($this->configRows('smtp_config') as $row) {
             $this->smtp[$row->key] = (string) $row->value;
-        }
-        foreach ($this->configRows('captcha_config') as $row) {
-            if ($row->key === 'captcha_page') {
-                $decoded = json_decode((string) $row->value, true);
-                $this->captcha[$row->key] = is_array($decoded) ? $decoded : [];
-            } elseif ($row->key === 'captcha_mode') {
-                $this->captcha[$row->key] = (bool) (int) $row->value;
-            } else {
-                $this->captcha[$row->key] = (string) $row->value;
-            }
-        }
-        foreach ($this->configRows('display_config') as $row) {
-            $this->display[$row->key] = (string) $row->value;
         }
     }
 
@@ -333,52 +318,6 @@ class StoreConfigManager extends GP247AdminComponent
     }
 
     /**
-     * Persist a captcha_config value for this store. captcha_page is a
-     * checklist stored as a JSON array (legacy gp247_captcha_page format).
-     *
-     * @param mixed  $value
-     * @param string $key   `captcha_page` updates may arrive as `captcha_page.<idx>`.
-     * @return void
-     * @throws \GP247\Core\AdminShell\Domain\AuthorizationException When denied.
-     */
-    public function updatedCaptcha($value, string $key): void
-    {
-        $this->authorizeAction('update');
-
-        $root = explode('.', $key, 2)[0];
-        if ($root === 'captcha_page') {
-            $selected = array_values(array_filter(
-                (array) ($this->captcha['captcha_page'] ?? []),
-                static fn ($v): bool => $v !== '' && $v !== null && $v !== false,
-            ));
-            $this->persistConfig('captcha_page', json_encode($selected));
-
-            return;
-        }
-        if ($root === 'captcha_mode') {
-            $this->persistConfig('captcha_mode', $value ? 1 : 0);
-
-            return;
-        }
-
-        $this->persistConfig($root, gp247_clean((string) $value));
-    }
-
-    /**
-     * Persist a display_config (limit per page) value for this store.
-     *
-     * @param mixed  $value
-     * @param string $key
-     * @return void
-     * @throws \GP247\Core\AdminShell\Domain\AuthorizationException When denied.
-     */
-    public function updatedDisplay($value, string $key): void
-    {
-        $this->authorizeAction('update');
-        $this->persistConfig($key, (string) (int) $value);
-    }
-
-    /**
      * Write one config value for this store (key is unique per store).
      *
      * @param string $key
@@ -408,9 +347,6 @@ class StoreConfigManager extends GP247AdminComponent
 
         $currencyOptions = $this->currencyOptions();
         $templateOptions = $this->templateOptions();
-        $captchaMethods = function_exists('gp247_captcha_get_plugin_installed')
-            ? (array) gp247_captcha_get_plugin_installed()
-            : [];
 
         return view('Plugins/MultiStore::Admin.livewire.store_config', [
             'pathPlugin' => $plugin->appPath,
@@ -420,19 +356,9 @@ class StoreConfigManager extends GP247AdminComponent
             'languageOptions' => $languageOptions,
             'currencyOptions' => $currencyOptions,
             'templateOptions' => $templateOptions,
-            'captchaMethods' => $captchaMethods,
-            'captchaPages' => [
-                'register' => gp247_language_render('admin.captcha.captcha_page_register'),
-                'forgot'   => gp247_language_render('admin.captcha.captcha_page_forgot_password'),
-                'checkout' => gp247_language_render('admin.captcha.captcha_page_checkout'),
-                'contact'  => gp247_language_render('admin.captcha.captcha_page_contact'),
-                'review'   => gp247_language_render('admin.captcha.captcha_page_review'),
-            ],
             'smtpMethodOptions' => ['' => 'None Security', 'TLS' => 'TLS', 'SSL' => 'SSL'],
             'emailActionRows' => $this->configRows('email_action')->where('key', '<>', 'email_action_queue'),
             'smtpRows' => $this->configRows('smtp_config'),
-            'captchaRows' => $this->configRows('captcha_config'),
-            'displayRows' => $this->configRows('display_config'),
         ])->layout('gp247-admin::layouts.admin', [
             'title' => gp247_language_render('admin.store.config_store', ['id' => $this->storeId]),
         ]);
