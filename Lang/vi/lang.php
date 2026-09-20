@@ -1,6 +1,6 @@
 <?php
 return [
-    'title'      => 'Quản lý nhiều cửa hàng',
+    'title'      => 'Hệ thống cửa hàng',
     'parent_order' => 'Đơn hàng cha',
     'conflict_multi_vendor' => 'Không thể cài đặt: website này đang cài plugin multi-vendor (MultiVendorPro / MultiVendor / Pmo247). Multi-store và multi-vendor là hai mô hình kinh doanh khác nhau, không thể chạy chung — hãy gỡ plugin multi-vendor trước.',
     'quota_reached' => 'Bản Free chỉ cho phép tối đa :quota cửa hàng (tính cả cửa hàng mặc định). Nâng cấp lên Multi-store Pro để tạo thêm cửa hàng.',

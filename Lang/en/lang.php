@@ -1,6 +1,6 @@
 <?php
 return [
-    'title'      => 'Manage multiple stores',
+    'title'      => 'Multiple Store',
     'parent_order' => 'Order parent',
     'conflict_multi_vendor' => 'Cannot install: a multi-vendor plugin (MultiVendorPro / MultiVendor / Pmo247) is installed on this site. Multi-store and multi-vendor are different business models and cannot run together — uninstall the multi-vendor plugin first.',
     'quota_reached' => 'The Free edition allows up to :quota stores in total (including the default store). Upgrade to Multi-store Pro to create more stores.',
