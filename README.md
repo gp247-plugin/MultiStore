@@ -60,6 +60,18 @@ Two common workflows when running many stores — the Free edition is enough to 
 
 🔗 The two Pro workflows above: [gp247.net/en/product/multi-store-pro.html](https://gp247.net/en/product/multi-store-pro.html) · [Tiếng Việt](https://gp247.net/vi/product/multi-store-pro.html)
 
+## Documentation
+The detailed guides live on the GP247 documentation site — **one source**, always the current version:
+
+| Document | Contents |
+| --- | --- |
+| [Overview](https://gp247.net/en/docs/plugin-multi-store/multi-store-overview.html) | What Multi-Store is, the problem it solves, how it differs from Multi-Vendor, Free vs Pro |
+| [Setup](https://gp247.net/en/docs/plugin-multi-store/multi-store-setup.html) | Install and enable the plugin, create the first store, point a domain at it, verify |
+| [Operations](https://gp247.net/en/docs/plugin-multi-store/multi-store-operations.html) | Per-store settings, getting products into stores, admin rights, orders and reports |
+| [Customisation](https://gp247.net/en/docs/plugin-multi-store/multi-store-customize.html) | Per-store look and feel, wording, developer hooks |
+| Product page | [gp247.net — Multi-Store Pro](https://gp247.net/en/product/multi-store-pro.html) |
+| Vietnamese version of this README | [README_vi.md](./README_vi.md) |
+
 ## Conditions & Rules (know before you use it)
 - **Cannot be installed alongside Multi-Vendor** — Multi-Store and multi-vendor are different models that share store data in conflicting ways. The system **blocks installation** if a multi-vendor plugin is present; remove the other plugin first, then install.
 - **The Free edition is limited to 3 stores** (including the root store) — enough to get started; to add more, upgrade to Pro. This is the line between the two editions, not an error.
@@ -101,7 +113,7 @@ Two common workflows when running many stores — the Free edition is enough to 
 
 **Q9: Where do I find detailed installation and configuration?**
 
-→ See the official product page: [gp247.net/en/product/multi-store-pro.html](https://gp247.net/en/product/multi-store-pro.html) (a Vietnamese version is available too).
+→ In the [Setup guide](https://gp247.net/en/docs/plugin-multi-store/multi-store-setup.html) and the [Operations guide](https://gp247.net/en/docs/plugin-multi-store/multi-store-operations.html) on gp247.net (the **Documentation** section above lists all four pages). Buying the Pro edition is covered on the [product page](https://gp247.net/en/product/multi-store-pro.html).
 
 ---
 

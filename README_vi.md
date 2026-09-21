@@ -60,6 +60,18 @@ Hai luồng vận hành hay gặp khi chạy nhiều cửa hàng — bản Free 
 
 🔗 Hai luồng Pro ở trên: [gp247.net/vi/product/multi-store-pro.html](https://gp247.net/vi/product/multi-store-pro.html) · [English](https://gp247.net/en/product/multi-store-pro.html)
 
+## Tài liệu
+Hướng dẫn chi tiết nằm trên trang tài liệu của GP247 — **một nguồn duy nhất**, luôn là bản mới nhất:
+
+| Tài liệu | Nội dung |
+| --- | --- |
+| [Tổng quan](https://gp247.net/vi/docs/plugin-multi-store/multi-store-overview.html) | Multi-Store là gì, giải quyết việc gì, khác Multi-Vendor ra sao, so sánh Free/Pro |
+| [Cài đặt](https://gp247.net/vi/docs/plugin-multi-store/multi-store-setup.html) | Cài và kích hoạt plugin, tạo cửa hàng đầu tiên, trỏ tên miền, kiểm tra |
+| [Vận hành](https://gp247.net/vi/docs/plugin-multi-store/multi-store-operations.html) | Cấu hình theo từng cửa hàng, đưa sản phẩm vào cửa hàng, phân quyền quản trị, đơn hàng và báo cáo |
+| [Tùy chỉnh](https://gp247.net/vi/docs/plugin-multi-store/multi-store-customize.html) | Giao diện theo cửa hàng, đổi chữ hiển thị, điểm cắm cho lập trình viên |
+| Trang sản phẩm | [gp247.net — Multi-Store Pro](https://gp247.net/vi/product/multi-store-pro.html) |
+| Bản tiếng Anh của README này | [README.md](./README.md) |
+
 ## Điều kiện & ràng buộc (hiểu trước khi dùng)
 - **Không cài chung với Multi-Vendor** — Multi-Store và multi-vendor là hai mô hình khác nhau, dùng chung dữ liệu cửa hàng theo cách xung đột nhau. Hệ thống sẽ **chặn cài đặt** nếu website đang có plugin multi-vendor; gỡ plugin kia trước rồi mới cài.
 - **Bản Free giới hạn 3 cửa hàng** (tính cả cửa hàng gốc) — đủ để bắt đầu; muốn thêm phải nâng lên Pro. Đây là ranh giới giữa hai bản, không phải lỗi.
@@ -101,7 +113,7 @@ Hai luồng vận hành hay gặp khi chạy nhiều cửa hàng — bản Free 
 
 **Câu 9: Cài đặt và cấu hình chi tiết xem ở đâu?**
 
-→ Xem trang sản phẩm chính thức: [gp247.net/vi/product/multi-store-pro.html](https://gp247.net/vi/product/multi-store-pro.html) (có bản tiếng Anh tương ứng).
+→ Xem [tài liệu Cài đặt](https://gp247.net/vi/docs/plugin-multi-store/multi-store-setup.html) và [tài liệu Vận hành](https://gp247.net/vi/docs/plugin-multi-store/multi-store-operations.html) trên gp247.net (mục **Tài liệu** ở trên liệt kê đủ bốn trang). Thông tin mua bản Pro ở [trang sản phẩm](https://gp247.net/vi/product/multi-store-pro.html).
 
 ---
 
