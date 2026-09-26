@@ -60,6 +60,25 @@ Hai luồng vận hành hay gặp khi chạy nhiều cửa hàng — bản Free 
 
 🔗 Hai luồng Pro ở trên: [gp247.net/vi/product/multi-store-pro.html](https://gp247.net/vi/product/multi-store-pro.html) · [English](https://gp247.net/en/product/multi-store-pro.html)
 
+## Cài bằng dòng lệnh (CLI, gp247 3.x)
+Từ gp247 3.x, bạn có thể tải **MultiStore** từ thư viện GP247 và cài ngay bằng dòng lệnh mà không cần mở admin. Mở Terminal tại thư mục gốc website rồi chạy:
+
+```bash
+# 1) Chỉ làm 1 lần cho mỗi website: đăng ký API License (miễn phí) để kết nối thư viện GP247
+php artisan gp247:ext-register-license
+
+# 2) Tải plugin từ thư viện và cài
+php artisan gp247:ext-install --type=plugin --key=MultiStore
+```
+
+- Trước bước 1, kiểm tra `APP_URL` trong `.env` là **domain thật** của website (không để `http://localhost`), vì license được gắn với domain này.
+- Cài xong, plugin được **bật sẵn** và cache tự làm mới, bạn không cần thao tác gì thêm trong admin.
+- Lệnh tự kiểm tra điều kiện khai báo trong `gp247.json` (core 3.0, `gp247/shop`, plugin phụ thuộc, quy tắc không cài chung với Multi-Vendor). Nếu thiếu, lệnh dừng lại và báo rõ thiếu gì.
+- Nếu thư mục plugin đã có sẵn trong `app/GP247/Plugins/` (chép thủ công hoặc giải nén từ file zip), lệnh sẽ **cài tại chỗ**, không tải lại.
+- Nếu plugin đã được cài, lệnh sẽ từ chối. Để lên bản mới, chạy `php artisan gp247:ext-update --type=plugin --key=MultiStore`.
+- Thêm `--json` vào cuối lệnh để nhận kết quả dạng máy đọc được (dùng cho script/CI).
+- Chi tiết: [Hướng dẫn cài đặt tiện ích](https://gp247.net/vi/docs/user-guide-extension/guide-to-installing-the-extension.html).
+
 ## Tài liệu
 Hướng dẫn chi tiết nằm trên trang tài liệu của GP247 — **một nguồn duy nhất**, luôn là bản mới nhất:
 
@@ -117,4 +136,4 @@ Hướng dẫn chi tiết nằm trên trang tài liệu của GP247 — **một 
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-09-02 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-09-25 · ✍️ **Tác giả (Author):** GP247</sub>

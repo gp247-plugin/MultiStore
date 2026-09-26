@@ -60,6 +60,25 @@ Two common workflows when running many stores — the Free edition is enough to 
 
 🔗 The two Pro workflows above: [gp247.net/en/product/multi-store-pro.html](https://gp247.net/en/product/multi-store-pro.html) · [Tiếng Việt](https://gp247.net/vi/product/multi-store-pro.html)
 
+## Install from the command line (CLI, gp247 3.x)
+Since gp247 3.x you can download **MultiStore** from the GP247 library and install it straight from the command line, without opening the admin. Open a terminal in the website's root folder and run:
+
+```bash
+# 1) Once per website: register the (free) API License that connects the site to the GP247 library
+php artisan gp247:ext-register-license
+
+# 2) Download the plugin from the library and install it
+php artisan gp247:ext-install --type=plugin --key=MultiStore
+```
+
+- Before step 1, make sure `APP_URL` in `.env` is the website's **real domain** (not `http://localhost`) — the license is bound to that domain.
+- Once installed, the plugin is **enabled** and caches are refreshed automatically; nothing else is needed in the admin.
+- The command checks the requirements declared in `gp247.json` (core 3.0, `gp247/shop`, required plugins, the rule against installing alongside Multi-Vendor) and stops with a clear message if something is missing.
+- If the plugin folder is already in `app/GP247/Plugins/` (copied manually or unpacked from the zip), the command **installs it in place** instead of downloading it again.
+- The command refuses a plugin that is already installed. To move to a newer version, run `php artisan gp247:ext-update --type=plugin --key=MultiStore`.
+- Append `--json` to get machine-readable output (for scripts/CI).
+- More: [Extension installation guide](https://gp247.net/en/docs/user-guide-extension/guide-to-installing-the-extension.html).
+
 ## Documentation
 The detailed guides live on the GP247 documentation site — **one source**, always the current version:
 
@@ -117,4 +136,4 @@ The detailed guides live on the GP247 documentation site — **one source**, alw
 
 ---
 
-<sub>📅 **Last updated:** 2026-09-02 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-09-25 · ✍️ **Author:** GP247</sub>
