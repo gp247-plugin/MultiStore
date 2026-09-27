@@ -3,19 +3,21 @@
 
 namespace App\GP247\Plugins\MultiStore\Admin\Livewire;
 
+use App\GP247\Plugins\MultiStore\Admin\StoreProvisioner;
+use App\GP247\Plugins\MultiStore\Admin\StoreQuotaReachedException;
 use App\GP247\Plugins\MultiStore\AppConfig;
 use GP247\Core\AdminShell\Infrastructure\GP247AdminComponent;
 use GP247\Core\AdminShell\Infrastructure\HasValidationLabels;
 use GP247\Core\Models\AdminLanguage;
 use GP247\Core\Models\AdminStore;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
 
 /**
  * "Add new store" form (v2 port of the legacy store_add view +
  * AdminStoreListController::postCreate). Same validation and the same
  * transactional create (store + per-language descriptions + default data
- * seeding via AdminStore::setUpDataDefault). The description text field is
+ * seeding via AdminStore::setUpDataDefault), now done by StoreProvisioner so the
+ * CLI shares the same path. The description text field is
  * persisted into the `name` column — core 2.x renamed the legacy `title`
  * column of admin_store_description.
  *
@@ -151,67 +153,22 @@ class StoreCreateForm extends GP247AdminComponent
 
         // WHY server-side and BEFORE validation: the store quota is a
         // commercial boundary of the Free edition; hiding the button is UX
-        // only — a Livewire action can always be called directly. Counting
-        // admin_store at write time (ROOT included) is the enforcement point
+        // only — a Livewire action can always be called directly
         // (NFR-SEC-store-quota-server-side, ADR multi-store_free-store-quota).
-        // Skip the cap entirely when the quota is unlimited (Pro raises it via config).
-        $quota = AppConfig::storeQuota();
-        if (!AppConfig::isStoreQuotaUnlimited() && AdminStore::count() >= $quota) {
-            $this->notify('error', trans(
-                (new AppConfig)->appPath.'::lang.quota_reached',
-                ['quota' => $quota]
-            ));
+        // StoreProvisioner enforces it again for every other caller.
+        $provisioner = app(StoreProvisioner::class);
+        if ($provisioner->quotaReached()) {
+            $this->notify('error', (new StoreQuotaReachedException(AppConfig::storeQuota()))->getMessage());
 
             return;
         }
 
+        // Validated here too so errors land on the form fields with their localized labels.
         $this->store['domain'] = gp247_store_process_domain($this->store['domain']);
         $this->validate();
 
-        $dataInsert = [
-            'logo'        => $this->store['logo'],
-            'phone'       => $this->store['phone'],
-            'long_phone'  => $this->store['long_phone'],
-            'email'       => $this->store['email'],
-            'time_active' => $this->store['time_active'],
-            'address'     => $this->store['address'],
-            'office'      => $this->store['office'],
-            'warehouse'   => $this->store['warehouse'],
-            'language'    => $this->store['language'],
-            'currency'    => $this->store['currency'],
-            'template'    => $this->store['template'],
-            'domain'      => $this->store['domain'],
-            'code'        => $this->store['code'],
-            // WHY no 'status' key: locking/unlocking a store is the
-            // marketplace owner's Pro-tier concern (ADR
-            // multi-store_store-status-vs-active); the Free edition relies on
-            // the safe DB default status=1 so a new store is always reachable.
-        ];
-
         try {
-            DB::connection(GP247_DB_CONNECTION)
-                ->transaction(function () use ($dataInsert) {
-                    $store = AdminStore::create($dataInsert);
-                    $dataDes = [];
-                    foreach (array_keys($this->languages()) as $code) {
-                        $dataDes[] = [
-                            'store_id'    => $store->id,
-                            'lang'        => $code,
-                            // WHY: core 2.x renamed admin_store_description.title -> name.
-                            'name'        => $this->descriptions[$code]['title'] ?? '',
-                            'keyword'     => $this->descriptions[$code]['keyword'] ?? '',
-                            'description' => $this->descriptions[$code]['description'] ?? '',
-                            // WHY: maintain_content is admin-authored rich HTML (TinyMCE) —
-                            // stored raw like core WebsiteInfo::RICH_FIELDS; RBAC-gated screen.
-                            'maintain_content' => $this->descriptions[$code]['maintain_content'] ?? '',
-                            'maintain_note' => $this->descriptions[$code]['maintain_note'] ?? '',
-                        ];
-                    }
-                    AdminStore::insertDescription($dataDes);
-
-                    // Seed the default config/layout data for the new store.
-                    AdminStore::setUpDataDefault($store);
-                });
+            $provisioner->create($this->store, $this->descriptions);
         } catch (\Throwable $e) {
             $this->notify('error', $e->getMessage());
 
