@@ -2,6 +2,8 @@
 
 # S-Cart Multi-Store — Một trang quản trị, nhiều website bán hàng
 
+> 🚀 **Link MultiStore PRO:** [https://gp247.net/vi/product/multi-store-pro.html](https://gp247.net/vi/product/multi-store-pro.html)
+
 ## Giới thiệu
 Multi-Store là plugin giúp doanh nghiệp **vận hành nhiều website bán hàng từ một hệ thống quản trị duy nhất**. Tài liệu này dành cho chủ doanh nghiệp và người phụ trách vận hành (không cần rành kỹ thuật): đọc xong bạn sẽ hiểu Multi-Store dùng để làm gì, mang lại giá trị gì, khác Multi-Vendor ra sao, và bản Free khác bản Pro ở những điểm nào để chọn cho đúng nhu cầu.
 
@@ -49,7 +51,7 @@ Multi-Store có sẵn **bản Free** (miễn phí, đủ dùng để bắt đầ
 - **Chọn Free khi:** bạn mới bắt đầu, cần tối đa 3 cửa hàng và tự một mình quản lý tất cả.
 - **Nâng lên Pro khi:** bạn cần nhiều hơn 3 cửa hàng, muốn giao mỗi cửa hàng cho một người quản trị riêng, hoặc cần báo cáo tổng hợp toàn hệ thống.
 
-🔗 **Tìm hiểu & nâng cấp bản Pro:** [gp247.net/vi/product/multi-store-pro.html](https://gp247.net/vi/product/multi-store-pro.html) · [English](https://gp247.net/en/product/multi-store-pro.html)
+> 🚀 **Link MultiStore PRO:** [https://gp247.net/vi/product/multi-store-pro.html](https://gp247.net/vi/product/multi-store-pro.html)
 
 ## 4. Đưa sản phẩm vào cửa hàng & cấp quyền quản trị
 Hai luồng vận hành hay gặp khi chạy nhiều cửa hàng — bản Free đủ để bắt đầu, phần nâng cao thuộc Pro:

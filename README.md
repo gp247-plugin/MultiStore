@@ -2,6 +2,8 @@
 
 # S-Cart Multi-Store — One admin, many sales websites
 
+> 🚀 **Link MultiStore PRO:** [https://gp247.net/en/product/multi-store-pro.html](https://gp247.net/en/product/multi-store-pro.html)
+
 ## Introduction
 Multi-Store is a plugin that lets a business **run multiple sales websites from a single admin system**. This document is for business owners and operations managers (no technical background needed): after reading it you will understand what Multi-Store is for, the value it brings, how it differs from Multi-Vendor, and how the Free edition differs from Pro so you can pick the right fit.
 
@@ -49,7 +51,7 @@ Multi-Store comes as a **Free edition** (free, enough to get started) and a **Pr
 - **Choose Free when:** you are starting out, need up to 3 stores, and manage everything yourself.
 - **Upgrade to Pro when:** you need more than 3 stores, want to hand each store to its own administrator, or need consolidated system-wide reports.
 
-🔗 **Learn more & upgrade to Pro:** [gp247.net/en/product/multi-store-pro.html](https://gp247.net/en/product/multi-store-pro.html) · [Tiếng Việt](https://gp247.net/vi/product/multi-store-pro.html)
+> 🚀 **Link MultiStore PRO:** [https://gp247.net/en/product/multi-store-pro.html](https://gp247.net/en/product/multi-store-pro.html)
 
 ## 4. Getting products into stores & granting admin rights
 Two common workflows when running many stores — the Free edition is enough to start, the advanced parts are Pro:
