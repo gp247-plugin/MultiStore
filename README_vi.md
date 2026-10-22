@@ -1,4 +1,4 @@
-> 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./README.md)
+> 🌐 **Ngôn ngữ:** 🇻🇳 Tiếng Việt (hiện tại) · [🇬🇧 English](./README.md) · [🇯🇵 日本語](./README_ja.md)
 
 # S-Cart Multi-Store — Một trang quản trị, nhiều website bán hàng
 
@@ -138,4 +138,4 @@ Hướng dẫn chi tiết nằm trên trang tài liệu của GP247 — **một 
 
 ---
 
-<sub>📅 **Cập nhật lần cuối:** 2026-09-25 · ✍️ **Tác giả (Author):** GP247</sub>
+<sub>📅 **Cập nhật lần cuối:** 2026-10-22 · ✍️ **Tác giả (Author):** GP247</sub>

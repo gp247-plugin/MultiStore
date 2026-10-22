@@ -1,4 +1,4 @@
-> 🌐 **Language:** [🇻🇳 Tiếng Việt](./README_vi.md) · 🇬🇧 English (current)
+> 🌐 **Language:** [🇻🇳 Tiếng Việt](./README_vi.md) · 🇬🇧 English (current) · [🇯🇵 日本語](./README_ja.md)
 
 # S-Cart Multi-Store — One admin, many sales websites
 
@@ -138,4 +138,4 @@ The detailed guides live on the GP247 documentation site — **one source**, alw
 
 ---
 
-<sub>📅 **Last updated:** 2026-09-25 · ✍️ **Author:** GP247</sub>
+<sub>📅 **Last updated:** 2026-10-22 · ✍️ **Author:** GP247</sub>
